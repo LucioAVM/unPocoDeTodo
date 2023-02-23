@@ -16,11 +16,14 @@
 
 int main(void)
 {
+	setbuf(stdout, NULL);
+
 	int menu;
 	int validacion;
 
 	LinkedList* listaMain = ll_newLinkedList();
-	LinkedList* listaPorcentaje;
+	LinkedList* listaPorcentaje = NULL;
+	LinkedList* listaFiltrada = NULL;
 
 	do
 	{
@@ -54,7 +57,20 @@ int main(void)
 			mostrarMensaje("porcentaje calculados correctamente", "Error al calcular porcentajes", validacion);
 			break;
 		case 6:
-			validacion = controller_GuardarCsv(listaMain,"Mapeado.csv");
+			validacion = controller_GuardarCsv(listaPorcentaje,"Mapeado.csv");
+			mostrarMensaje(".csv creado correctamente", "Error al crear .csv", validacion);
+			break;
+		case 7:
+			listaFiltrada = controller_filter(listaMain);
+			auxiliares_mostrarEstudiantes(listaFiltrada);
+			if(listaFiltrada != NULL)
+			{
+				validacion = 0;
+			}
+			mostrarMensaje("lista filtrada correctamente", "Error al filtrar la lista", validacion);
+			break;
+		case 8:
+			validacion = controller_GuardarCsv(listaFiltrada,"Filtrado.csv");
 			mostrarMensaje(".csv creado correctamente", "Error al crear .csv", validacion);
 			break;
 		}
@@ -62,3 +78,16 @@ int main(void)
 
 	return EXIT_SUCCESS;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

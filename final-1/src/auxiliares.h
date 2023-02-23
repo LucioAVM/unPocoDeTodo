@@ -23,4 +23,10 @@ int auxiliares_GuardarCsv(char* path , LinkedList* listaMain);
 
 int auxiliares_PorcentajeMateriasAprobadas(void* pElement);
 
+LinkedList* auxiliares_filtrarCarrera(LinkedList* listaMain);
+
+int auxiliares_filtrarTUP(void* pElement);
+
+int auxiliares_filtrarTUSI(void* pElement);
+
 #endif /* AUXILIARES_H_ */

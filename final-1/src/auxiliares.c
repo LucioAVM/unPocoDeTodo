@@ -162,17 +162,62 @@ int auxiliares_PorcentajeMateriasAprobadas(void* pElement)
 	return retorno;
 }
 
-int auxiliares_filter(LinkedList* listaMain)
+
+
+LinkedList* auxiliares_filtrarCarrera(LinkedList* listaMain)
 {
-	int retorno = -1;
+	LinkedList* listaFiltrada = NULL;
 
 	int opcion;
 
-	printf("CARRERAS:\n"
-			"1) TUP\n"
-			"2) TUSI\n");
-	fflush();
-	scanf("%d",&opcion);
+	int (*pFunc)(void*);
 
+	do
+	{
+		printf("CARRERAS:\n"
+				"1) TUP\n"
+				"2) TUSI\n");
+		fflush(stdout);
+		scanf("%d",&opcion);
+	}while(opcion < 0 || opcion > 3);
+
+	switch(opcion)
+	{
+	case 1:
+		pFunc = auxiliares_filtrarTUP;
+		break;
+
+	case 2:
+		pFunc = auxiliares_filtrarTUSI;
+		break;
+	}
+	listaFiltrada = ll_filter(listaMain,pFunc);
+
+	return listaFiltrada;
+}
+
+int auxiliares_filtrarTUP(void* pElement)
+{
+	int retorno = -1;
+
+	char carrera[15];
+
+	if(estudiante_GetCarrera(carrera, pElement) == 0 && strcmp(carrera, "TUP") == 0)
+	{
+		retorno = 0;
+	}
+	return retorno;
+}
+
+int auxiliares_filtrarTUSI(void* pElement)
+{
+	int retorno = -1;
+
+	char carrera[15];
+
+	if(estudiante_GetCarrera(carrera, pElement) == 0 && strcmp(carrera, "TUSI") == 0)
+	{
+		retorno = 0;
+	}
 	return retorno;
 }

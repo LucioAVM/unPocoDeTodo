@@ -21,6 +21,8 @@ int Controller_menu (void)
 				"4) Guardar ´Ordenado.csv´\n"
 				"5) ll_map para porcentaje de carrera\n"
 				"6) guardar ´mapeado.csv´\n"
+				"7) filtrar por carrera\n"
+				"8) guardar ll filtrada\n"
 				"11- SALIR\n\t-->");
 
 		if(bandera == 1)
@@ -104,16 +106,15 @@ LinkedList* porcentajeDeCarrera(LinkedList* listaMain)
 	return nuevaLista;
 }
 
-int controller_filter(LinkedList* listaMain)
+LinkedList* controller_filter(LinkedList* listaMain)
 {
-	int retorno = -1;
+	LinkedList* listaFiltrada = NULL;
 
 	if(ll_isEmpty(listaMain) == 0)
 	{
-		retorno = ;
+		listaFiltrada = auxiliares_filtrarCarrera(listaMain);
 	}
-
-	return retorno;
+	return listaFiltrada;
 }
 
 

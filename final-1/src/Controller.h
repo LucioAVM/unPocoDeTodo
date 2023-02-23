@@ -29,4 +29,6 @@ int controller_GuardarCsv(LinkedList* listaMain, char* path);
 
 LinkedList* porcentajeDeCarrera(LinkedList* listaMain);
 
+LinkedList* controller_filter(LinkedList* listaMain);
+
 #endif /* CONTROLLER_H_ */
