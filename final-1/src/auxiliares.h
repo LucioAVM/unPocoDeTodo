@@ -21,4 +21,6 @@ int auxiliares_ordenarPorNombre(void* pElement1, void* pElement2);
 
 int auxiliares_GuardarCsv(char* path , LinkedList* listaMain);
 
+int auxiliares_PorcentajeMateriasAprobadas(void* pElement);
+
 #endif /* AUXILIARES_H_ */

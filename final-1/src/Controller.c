@@ -19,8 +19,8 @@ int Controller_menu (void)
 				"2) Listar\n"
 				"3) Ordenar por Nombre\n"
 				"4) Guardar ´Ordenado.csv´\n"
-				"5) ll_map para %de carrera\n"
-				"6) \n"
+				"5) ll_map para porcentaje de carrera\n"
+				"6) guardar ´mapeado.csv´\n"
 				"11- SALIR\n\t-->");
 
 		if(bandera == 1)
@@ -81,23 +81,57 @@ int controller_ordenarPorNombre(LinkedList* listaMain)
 	return retorno;
 }
 
-int controller_GuardarCsv(LinkedList* listaMain)
+int controller_GuardarCsv(LinkedList* listaMain, char* path)
 {
 	int retorno = -1;
 
 	if(ll_isEmpty(listaMain) == 0)
 	{
-		retorno = auxiliares_GuardarCsv("Ordenado.csv", listaMain);
+		retorno = auxiliares_GuardarCsv(path, listaMain);
 	}
 
 	return retorno;
 }
 
-int porcentajeDeCarrera(LinkedList* listaMain)
+LinkedList* porcentajeDeCarrera(LinkedList* listaMain)
+{
+	LinkedList* nuevaLista = ll_newLinkedList();
+
+	if(ll_isEmpty(listaMain) == 0)
+	{
+		nuevaLista = ll_map(listaMain, auxiliares_PorcentajeMateriasAprobadas);
+	}
+	return nuevaLista;
+}
+
+int controller_filter(LinkedList* listaMain)
 {
 	int retorno = -1;
 
-
+	if(ll_isEmpty(listaMain) == 0)
+	{
+		retorno = ;
+	}
 
 	return retorno;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -590,37 +590,37 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 }
 
 /**
- * @brief calcula el total
+ * @brief aplica la funcion pasada por parametro a toda la LL
  *
  * @param this
  * @param pFuncion
  * @return LL con totales
- *//*
+ */
 LinkedList* ll_map(LinkedList* this,int (pFuncion)(void*))
 {
 	LinkedList* pLista = ll_newLinkedList();
 	int tam;
 	void* pElement = NULL;
-	int validacion;
 
-	if(pLista != NULL && ll_isEmpty(this) == 0)
+	if(pLista != NULL && ll_isEmpty(this) == 0)	//validaciones
 	{
 		tam = ll_len(this);
-		for(int i = 0 ; i < tam ; i++)
+		for(int i = 0 ; i < tam ; i++)			//primer bucle para recorrer toda la LL
 		{
-			pElement = ll_get(this, i);
+			pElement = ll_get(this, i);			//traigo elemneto
 
 			if(pElement != NULL)
 			{
-				validacion = pFuncion(pElement);
-
-				ll_add(pLista, pElement);
+				if(pFuncion(pElement)==0)//aplico funcion
+				{
+					ll_add(pLista, pElement);		//estructura modificada a la nueva LL
+				}
 			}
 		}
 	}
 	return pLista;
 }
-*/
+
 /**
  * @brief itera todos los elementos del array y los filtra por pFunc
  *

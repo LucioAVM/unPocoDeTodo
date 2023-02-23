@@ -121,7 +121,6 @@ int auxiliares_GuardarCsv(char* path , LinkedList* listaMain)
 			for(i=0;i<tam;i++)
 			{
 				estudiante = (eEstudiante*)ll_get(listaMain,i);
-				auxiliares_mostrarUnEstudiante(estudiante);
 				fprintf(pArchivoTexto, "%-5d - %-30s - %10s - %-5d - %-5.2f\n",
 						estudiante->legajo,
 						estudiante->nombre,
@@ -134,5 +133,46 @@ int auxiliares_GuardarCsv(char* path , LinkedList* listaMain)
 		fclose(pArchivoTexto);
 		retorno = 0;
 	}
+	return retorno;
+}
+
+
+int auxiliares_PorcentajeMateriasAprobadas(void* pElement)
+{
+	int retorno = -1;
+
+	int materias = 0;
+
+	char carrera[15];
+
+	float porcentajeAprobadas;
+
+	if(estudiante_GetCantDeMateriasAprobadas(&materias, pElement) == 0 && estudiante_GetCarrera(carrera, pElement) == 0)
+	{
+		if(strcmp(carrera, "TUP") == 0)
+		{
+			porcentajeAprobadas = materias*100/20;
+		}else if(strcmp(carrera, "TUSI") == 0)
+		{
+			porcentajeAprobadas = materias*100/14;
+		}
+		estudiante_SetporcentajeAprobadas(porcentajeAprobadas, pElement);
+		retorno = 0;
+	}
+	return retorno;
+}
+
+int auxiliares_filter(LinkedList* listaMain)
+{
+	int retorno = -1;
+
+	int opcion;
+
+	printf("CARRERAS:\n"
+			"1) TUP\n"
+			"2) TUSI\n");
+	fflush();
+	scanf("%d",&opcion);
+
 	return retorno;
 }

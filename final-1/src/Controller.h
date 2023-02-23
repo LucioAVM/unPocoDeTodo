@@ -25,6 +25,8 @@ int controller_listar(LinkedList* listaMain);
 
 int controller_ordenarPorNombre(LinkedList* listaMain);
 
-int controller_GuardarCsv(LinkedList* listaMain);
+int controller_GuardarCsv(LinkedList* listaMain, char* path);
+
+LinkedList* porcentajeDeCarrera(LinkedList* listaMain);
 
 #endif /* CONTROLLER_H_ */

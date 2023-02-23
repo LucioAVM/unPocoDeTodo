@@ -20,6 +20,7 @@ int main(void)
 	int validacion;
 
 	LinkedList* listaMain = ll_newLinkedList();
+	LinkedList* listaPorcentaje;
 
 	do
 	{
@@ -41,7 +42,19 @@ int main(void)
 			mostrarMensaje("Ordenado Correctamente", "Error al ordenar", validacion);
 			break;
 		case 4:
-			validacion = controller_GuardarCsv(listaMain);
+			validacion = controller_GuardarCsv(listaMain,"Ordenado.csv");
+			mostrarMensaje(".csv creado correctamente", "Error al crear .csv", validacion);
+			break;
+		case 5:
+			listaPorcentaje = porcentajeDeCarrera(listaMain);
+			if(listaPorcentaje != NULL)
+			{
+				validacion = 0;
+			}
+			mostrarMensaje("porcentaje calculados correctamente", "Error al calcular porcentajes", validacion);
+			break;
+		case 6:
+			validacion = controller_GuardarCsv(listaMain,"Mapeado.csv");
 			mostrarMensaje(".csv creado correctamente", "Error al crear .csv", validacion);
 			break;
 		}
